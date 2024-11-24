@@ -167,5 +167,350 @@ void disp(){
 	}
 }
 `);
+
+console.log(`
+3. link List
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define a structure for a linked list node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (!newNode) {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to add a node to the end of the list
+void appendNode(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    struct Node* temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+// Function to display the linked list
+void displayList(struct Node* head) {
+    if (head == NULL) {
+        printf("The list is empty.\n");
+        return;
+    }
+    printf("Linked List: ");
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> a", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+// Main function
+int main() {
+    struct Node* head = NULL; // Initialize an empty list
+
+    // Append some nodes
+    appendNode(&head, 10);
+    appendNode(&head, 20);
+    appendNode(&head, 30);
+    appendNode(&head, 40);
+
+    // Display the list
+    displayList(head);
+
+    return 0;
+}
+`);
+
+console.log(`
+4.malloc function
+
+
+#include<stdio.h>
+#include<stdlib.h>
+	
+int main() {
+    int n;
+    int *arr;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    arr = (int*)malloc(n * sizeof(int));
+    
+    if (arr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    printf("Enter %d integers:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("You entered the following integers:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    free(arr);
+
+    return 0;
+}
+`);
+
+console.log(`
+5. calloc function
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    int *arr;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    arr = (int *)calloc(n, sizeof(int));
+
+    if (arr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    printf("Enter %d integers:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+
+    printf("\nThe values you entered are:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Element %d: %d\n", i + 1, arr[i]);
+    }
+
+    free(arr);
+
+    return 0;
+}
+`);
+
+console.log(`
+6. re alloc function
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *arr = NULL; 
+    int size, i;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &size);
+
+    arr = (int*)malloc(size * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;  // Exit if memory allocation fails
+    }
+
+    printf("Enter %d integers:\n", size);
+    for (i = 0; i < size; i++) {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Do you want to resize the array? (1 for Yes, 0 for No): ");
+    int resize;
+    scanf("%d", &resize);
+
+    if (resize == 1) {
+        // Get the new size for the array
+        printf("Enter the new size: ");
+        scanf("%d", &size);
+
+        // Resize the array using realloc
+        arr = (int*)realloc(arr, size * sizeof(int));
+        if (arr == NULL) {
+            printf("Memory reallocation failed\n");
+            return 1;  // Exit if memory reallocation fails
+        }
+
+        // If the array has been resized, take new input
+        printf("Enter %d integers:\n", size);
+        for (i = 0; i < size; i++) {
+            printf("Element %d: ", i + 1);
+            scanf("%d", &arr[i]);
+        }
+    }
+
+    
+    printf("Array elements are:\n");
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    free(arr);
+
+    return 0;
+}
+
+`);
+
+console.log(`
+7. Sum Of N number using malloc
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *arr; 
+    int n, i, sum = 0;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    arr = (int*)malloc(n * sizeof(int));
+
+    if (arr == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;  // Exit if malloc fails
+    }
+
+    printf("Enter %d numbers:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+
+    printf("The sum of the numbers is: %d\n", sum);
+
+    free(arr);
+
+    return 0;
+}
+`);
+
+console.log(`
+8. sum of N number using calloc
+
+
+ #include <stdio.h>
+#include <stdlib.h> 
+
+int main() {
+    int *arr, N;
+    int sum = 0;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &N);
+
+    arr = (int *)calloc(N, sizeof(int));
+
+    if (arr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1; 
+    }
+
+    printf("Enter %d numbers: \n", N);
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    for (int i = 0; i < N; i++) {
+        sum += arr[i];
+    }
+
+    printf("The sum of the entered numbers is: %d\n", sum);
+
+    free(arr);
+
+    return 0;
+}
+`);
+
+
+console.log(`
+9. sum of N number using pointer
+
+
+#include <stdio.h>
+
+int main() {
+    int n, sum = 0;
+    int *ptr;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    
+    printf("Enter %d numbers:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    ptr = arr;
+
+    for (int i = 0; i < n; i++) {
+        sum += *(ptr + i); // Dereferencing pointer and adding to sum
+    }
+
+    printf("Sum of the numbers is: %d\n", sum);
+
+    return 0;
+} #include <stdio.h>
+
+int main() {
+    int n, sum = 0;
+    int *ptr;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    
+    printf("Enter %d numbers:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    ptr = arr;
+
+    for (int i = 0; i < n; i++) {
+        sum += *(ptr + i); // Dereferencing pointer and adding to sum
+    }
+
+    printf("Sum of the numbers is: %d\n", sum);
+
+    return 0;
+}
+
+`);
 </script>
 </html>
