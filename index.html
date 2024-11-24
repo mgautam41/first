@@ -512,5 +512,348 @@ int main() {
 }
 
 `);
+
+Experiment 4
+
+console.log(`
+10. Apply Bubble sort method to arrange the given below data in ascending
+order 12,54,23,6,78,89,5,7,34
+
+
+#include<stdio.h>
+void swap(int *a,int *b);
+void bubbleSort(int arr[],int size);
+int main()
+{
+    int arr[]={12, 6, 23, 54, 5, 7, 34, 78, 89};
+    int n = sizeof(arr)/ sizeof(arr[0]);
+    
+    printf("Orginal Array\n");
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    
+    bubbleSort(arr,n);
+    printf("\nAfter Bubble Sorting\n");
+    for(int i=0;i<9;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+
+    
+    
+}
+void swap(int *a,int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void bubbleSort(int arr[],int size)
+{
+    int temp;
+    
+    for(int i=0;i<size-1;i++)
+    {
+        for(int j=0;j<size - i - 1;j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+Second Method
+
+#include<stdio.h>
+#include<stdbool.h>
+void swap(int *a,int *b);
+void bubbleSort(int arr[],int size);
+int main()
+{
+    int arr[]={12, 6, 23, 54, 5, 7, 34, 78, 89};
+    int n = sizeof(arr)/ sizeof(arr[0]);
+    
+    printf("Orginal Array\n");
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    
+    bubbleSort(arr,n);
+    printf("\nAfter Bubble Sorting\n");
+    for(int i=0;i<9;i++)
+    {
+        printf("%d, ",arr[i]);
+    }
+
+    
+    
+}
+void swap(int *a,int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void bubbleSort(int arr[],int size)
+{
+    bool swapped;
+    
+    for(int i=0;i<size-1;i++)
+    {
+        swapped = false;
+        for(int j=0;j<size - i - 1;j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
+               swap(&arr[j],&arr[j+1]);
+               swapped = true;
+            }
+        }
+        
+        if(!swapped)
+        {
+            break;
+        }
+    }
+}
+`);
+
+
+console.log(`
+11. Apply selection sort method to arrange the given below data in ascending
+order 12,54,23,6,78,89,5,7,34
+
+
+#include<stdio.h>
+void swap(int *a,int *b);
+void printarr(int arr[],int size);
+void selectionsort(int arr[],int size);
+int main()
+{
+    int arr[] = {12,54,23,6,78,89,5,7,34};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    
+    printf("Unsorted Original Array\n");
+    printarr(arr,n);
+    
+    selectionsort(arr,n);
+    printf("\n\nSorted Array Using Selection Sort\n\n");
+    printarr(arr,n);
+    
+}
+void swap(int *a,int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void printarr(int arr[],int size)
+{
+    for(int i=0;i<size;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+}
+void selectionsort(int arr[],int size)
+{
+    for(int i=0;i<size;i++)
+    {
+        int min = i;
+        for(int j=i+1;j<size;j++)
+        {
+            if(arr[j] < arr[min])
+            {
+                min =j;
+            }
+        }
+        
+        if(min != i)
+        {
+            swap(&arr[min],&arr[i]);
+            // swap(&arr[i],&arr[min]);
+        }
+    }
+}
+`);
+
+
+consol.log(`
+12. Apply insertion method to arrange the given below data in ascending order: 11,55,22,6,78,89,55,77,34
+
+
+#include <stdio.h>
+
+
+// Function to perform insertion sort
+void insertionSort(int arr[], int size) {
+    for (int i = 1; i < size; i++) {
+        int valueToInsert = arr[i];  // Current value to be inserted
+        int holePosition = i;        // Start the hole at the current position
+
+
+        printf("\nPass %d:\n", i);
+        printf("Value to insert: %d\n", valueToInsert);
+
+
+        // Move the hole backward while shifting elements
+        while (holePosition > 0 && arr[holePosition - 1] > valueToInsert) {
+            printf("Comparing %d and %d: Shifting %d to the right.\n", arr[holePosition - 1], valueToInsert, arr[holePosition - 1]);
+            arr[holePosition] = arr[holePosition - 1];  // Shift element to the right
+            holePosition--;                             // Move the hole backward
+        }
+
+
+        // Insert the value at the hole position
+        arr[holePosition] = valueToInsert;
+        printf("Inserted %d at position %d.\n", valueToInsert, holePosition);
+
+
+        // Debug: Print the array after this pass
+        printf("Array after Pass %d: ", i);
+        for (int k = 0; k < size; k++) {
+            printf("%d ", arr[k]);
+        }
+        printf("\n");
+    }
+}
+
+
+int main() {
+    int arr[] = {11, 55, 22, 6, 78};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+
+    printf("Original Array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+
+    insertionSort(arr, size);
+
+
+    printf("\nSorted Array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+
+    return 0;
+}
+`);
+
+
+console.log(`
+13. Apply Linear search algorithm for the array based on its implementation.
+
+
+#include<stdio.h>
+int main()
+{
+    int arr[20],i,x,n;
+    printf("Enter Total Element for array:");
+    scanf("%d",&n);
+    
+    
+    for(i = 0 ; i<n;i++)
+    {
+        printf("\nEnter Element At[%d]:",i);
+        scanf("%d",&arr[i]);
+    }
+    
+    printf("\nEnter Element For Check: ");
+    scanf("%d",&x);
+    
+    for(i = 0;i<n;i++)
+    {
+        if(arr[i]  == x)
+        {
+            break;
+        }
+    }
+    
+    if(i < n)
+    {
+        printf("Element Found At Index : %d",i);
+    }
+    else
+    {
+        printf("Element Not Found!!");
+    }
+}
+`);
+
+
+console.log(`
+14.  Apply Binary search algorithm for the array based on its implementation.
+ 
+//Binary Search
+#include<stdio.h>
+int binarySearch(int arr[],int low,int high,int target);
+int main()
+{
+    int arr[100],n,target,searchIndex,first,last;
+    
+    printf("Enter Total Elements of array:");
+    scanf("%d",&n);
+    
+    printf("Enter Values in Ascending Order :");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    
+    printf("Enter The Value to Find:");
+    scanf("%d",&target);
+    
+    first = 0;
+    last = n-1;
+    
+    searchIndex=binarySearch(arr,first,last,target);
+    
+    if(searchIndex == -1)
+    {
+        printf("Not Found!!");
+    }
+    else
+    {
+        printf("%d is present at location %d.\n",target,searchIndex);
+    }
+}
+int binarySearch(int arr[],int low,int high,int target)
+{
+    int mid;
+    
+    if(low > high)
+    {
+        return -1;
+    }
+    
+    mid = (low+high) / 2;
+    
+    if(arr[mid] == target)
+    {
+        return mid;
+    }
+    else if(target > arr[mid])
+    {
+        return binarySearch(arr,mid+1,high,target);
+    }
+    else
+    {
+        return binarySearch(arr,low,mid-1,target);
+    }
+    
+}
+`);
 </script>
 </html>
