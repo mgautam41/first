@@ -1,858 +1,893 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-</body>
 <script>
-  console.log(`
-  1.queue program
-
-  #include<stdio.h>
-#include<stdlib.h>
-#define MAX 5
-
-int front = -1, rear = -1, queue[MAX];
-void insert();
-void del();
-void disp();
-
-void main(){
-	int ch;
-	while(1){
-		printf("\n***Queue Menu***");
-		printf("\n\n1.Insert\n2.Delete\n3.Display\n4.Exit");
-		printf("\nEnter Your Choise :");
-		scanf("%d",&ch);
-		
-		switch(ch){
-			case 1:
-				insert();
-				break;
-			case 2:
-				del();
-				break;
-			case 3:
-				disp();
-				break;
-			case 4:
-				exit(0);
-				break;
-			default:
-				printf("\nWrong Choise");
-		}
-	}
-}
-
-void insert(){
-	int val;
-	if(rear == MAX -1){
-		printf("\nQueue Is Full");
-	}else{
-		printf("\nEnter Element You Want To Add :");
-		scanf("%d",&val);
-		printf("\n%d Is Addded To Queue",val);
-		if(rear == -1){
-			front  = 0;
-		}
-		rear++;
-		queue[rear] = val;
-	}
-}
-
-void del(){
-	if(front == -1){
-		printf("\nQueue Is Empty");
-	}else{
-		printf("\nDelete Element is %d",queue[front]);
-		if(front == rear){
-			front = -1;
-			rear = -1;
-		}else{
-			front++;
-		}
-	}
-}
-
-void disp(){
-	int i;
-	if(front == -1){
-		printf("\nQueue Is Empty");
-	}else{
-		for(i=front;i<=rear;i++){
-			printf("[%d]",queue[i]);
-		}
-	}
-}  
-  `);
-
 console.log(`
-2. stack program
+1.Implement a Java program to create a class Student with data ‘name, city and age’ along with the method printData to display the data. Create the two objects s1 ,s2 to  declare and access the values.
 
+code:
 
-#include<stdio.h>
-#include<stdlib.h>
-#define MAX 5
+class Student {
+    String name;
+    String city;
+    int age;
 
-int top = -1,stack[MAX];
-void push();
-void pop();
-void peep();
-void disp();
-
-void main(){
-	int ch;
-	while(1){
-		printf("\n***Stack Menu ***");
-		printf("\n\n1.Push\n2.Pop\n3.Peep\n4.Display\n5.Exit");
-		printf("\n\nEnter Your Choise :");
-		scanf("%d",&ch);
-		
-		switch(ch){
-			case 1:push();
-				break;
-			case 2:pop();
-				break;
-			case 3:peep();
-				break;
-			case 4:disp();
-				break;
-			case 5:exit(0);
-				default:printf("\nWrong Choise");
-		}
-	}
+    void printData() {
+        System.out.println("Name: " + name);
+        System.out.println("City: " + city);
+        System.out.println("Age: " + age);
+        System.out.println("-------------------------");
+    }
 }
 
-void push(){
-	int val;
-	if(top == MAX -1){
-		printf("\nStack is Full");
-	}else{
-		printf("\nEnter Element You Want To Add :");
-		scanf("%d",&val);
-		printf("\n%d Added To The Stack",val);
-		top = top + 1;
-		stack[top] = val;
-	}
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.name = "Alice";
+        s1.city = "New York";
+        s1.age = 20;
+
+        Student s2 = new Student();
+        s2.name = "Bob";
+        s2.city = "Los Angeles";
+        s2.age = 22;
+
+        s1.printData();
+        s2.printData();
+    }
 }
 
-void pop(){
-	if(top == -1){
-		printf("\nStack is Empty");
-	}else{
-		printf("\nDeleted Element is :%d",stack[top]);
-		top = top - 1;
-	}
+2.Implement a java program to create a class Employee display the employee details such as employee id, employee name, salary, age using Scanner class. Create an Employee class to object and display employee details.
+
+code:
+
+import java.util.Scanner;
+
+class Employee {
+    int employeeId;
+    String employeeName;
+    double salary;
+    int age;
+
+    void displayDetails() {
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Employee Name: " + employeeName);
+        System.out.println("Salary: " + salary);
+        System.out.println("Age: " + age);
+    }
 }
 
-void peep(){
-	if(top == -1){
-		printf("\nStack is Empty");
-	}else{
-		printf("\nThe Top Value of Stack is :%d",stack[top]);
-	}
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Employee emp = new Employee();
+
+        System.out.print("Enter Employee ID: ");
+        emp.employeeId = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+
+        System.out.print("Enter Employee Name: ");
+        emp.employeeName = scanner.nextLine();
+
+        System.out.print("Enter Salary: ");
+        emp.salary = scanner.nextDouble();
+
+        System.out.print("Enter Age: ");
+        emp.age = scanner.nextInt();
+
+        System.out.println("\nEmployee Details:");
+        emp.displayDetails();
+    }
 }
 
-void disp(){
-	int i;
-	if(top == -1){
-		printf("\nStack is Empty");
-	}else{
-		for(i = top; i>=0; --i){
-			printf("[%d]",stack[i]);
-		}
-	}
-}
-`);
+3.Design a class to represent a bank account. Which contains account number, name of the depositor, type of the account, balance amount in the account. Use constructors to assign initial values, to Deposit an amount, to Withdraw amount after checking balance, to display name and balance.
 
-console.log(`
-3. link List
+code:
 
+class BankAccount {
+    private int accountNumber;
+    private String depositorName;
+    private String accountType;
+    private double balance;
 
-#include <stdio.h>
-#include <stdlib.h>
-
-// Define a structure for a linked list node
-struct Node {
-    int data;
-    struct Node* next;
-};
-
-// Function to create a new node
-struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if (!newNode) {
-        printf("Memory allocation failed\n");
-        exit(1);
-    }
-    newNode->data = data;
-    newNode->next = NULL;
-    return newNode;
-}
-
-// Function to add a node to the end of the list
-void appendNode(struct Node** head, int data) {
-    struct Node* newNode = createNode(data);
-    if (*head == NULL) {
-        *head = newNode;
-        return;
-    }
-    struct Node* temp = *head;
-    while (temp->next != NULL) {
-        temp = temp->next;
-    }
-    temp->next = newNode;
-}
-
-// Function to display the linked list
-void displayList(struct Node* head) {
-    if (head == NULL) {
-        printf("The list is empty.\n");
-        return;
-    }
-    printf("Linked List: ");
-    struct Node* temp = head;
-    while (temp != NULL) {
-        printf("%d -> a", temp->data);
-        temp = temp->next;
-    }
-    printf("NULL\n");
-}
-
-// Main function
-int main() {
-    struct Node* head = NULL; // Initialize an empty list
-
-    // Append some nodes
-    appendNode(&head, 10);
-    appendNode(&head, 20);
-    appendNode(&head, 30);
-    appendNode(&head, 40);
-
-    // Display the list
-    displayList(head);
-
-    return 0;
-}
-`);
-
-console.log(`
-4.malloc function
-
-
-#include<stdio.h>
-#include<stdlib.h>
-	
-int main() {
-    int n;
-    int *arr;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-
-    arr = (int*)malloc(n * sizeof(int));
-    
-    if (arr == NULL) {
-        printf("Memory allocation failed!\n");
-        return 1;
+    public BankAccount(int accountNumber, String depositorName, String accountType, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.depositorName = depositorName;
+        this.accountType = accountType;
+        this.balance = initialBalance;
     }
 
-    printf("Enter %d integers:\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    printf("You entered the following integers:\n");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-    free(arr);
-
-    return 0;
-}
-`);
-
-console.log(`
-5. calloc function
-
-
-#include <stdio.h>
-#include <stdlib.h>
-
-int main() {
-    int n;
-    int *arr;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-
-    arr = (int *)calloc(n, sizeof(int));
-
-    if (arr == NULL) {
-        printf("Memory allocation failed!\n");
-        return 1;
-    }
-
-    printf("Enter %d integers:\n", n);
-    for (int i = 0; i < n; i++) {
-        printf("Element %d: ", i + 1);
-        scanf("%d", &arr[i]);
-    }
-
-    printf("\nThe values you entered are:\n");
-    for (int i = 0; i < n; i++) {
-        printf("Element %d: %d\n", i + 1, arr[i]);
-    }
-
-    free(arr);
-
-    return 0;
-}
-`);
-
-console.log(`
-6. re alloc function
-
-
-#include <stdio.h>
-#include <stdlib.h>
-
-int main() {
-    int *arr = NULL; 
-    int size, i;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &size);
-
-    arr = (int*)malloc(size * sizeof(int));
-    if (arr == NULL) {
-        printf("Memory allocation failed\n");
-        return 1;  // Exit if memory allocation fails
-    }
-
-    printf("Enter %d integers:\n", size);
-    for (i = 0; i < size; i++) {
-        printf("Element %d: ", i + 1);
-        scanf("%d", &arr[i]);
-    }
-
-    printf("Do you want to resize the array? (1 for Yes, 0 for No): ");
-    int resize;
-    scanf("%d", &resize);
-
-    if (resize == 1) {
-        // Get the new size for the array
-        printf("Enter the new size: ");
-        scanf("%d", &size);
-
-        // Resize the array using realloc
-        arr = (int*)realloc(arr, size * sizeof(int));
-        if (arr == NULL) {
-            printf("Memory reallocation failed\n");
-            return 1;  // Exit if memory reallocation fails
-        }
-
-        // If the array has been resized, take new input
-        printf("Enter %d integers:\n", size);
-        for (i = 0; i < size; i++) {
-            printf("Element %d: ", i + 1);
-            scanf("%d", &arr[i]);
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Successfully deposited: " + amount);
+        } else {
+            System.out.println("Invalid deposit amount!");
         }
     }
 
-    
-    printf("Array elements are:\n");
-    for (i = 0; i < size; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-
-    free(arr);
-
-    return 0;
-}
-
-`);
-
-console.log(`
-7. Sum Of N number using malloc
-
-
-#include <stdio.h>
-#include <stdlib.h>
-
-int main() {
-    int *arr; 
-    int n, i, sum = 0;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-
-    arr = (int*)malloc(n * sizeof(int));
-
-    if (arr == NULL) {
-        printf("Memory allocation failed.\n");
-        return 1;  // Exit if malloc fails
-    }
-
-    printf("Enter %d numbers:\n", n);
-    for (i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    for (i = 0; i < n; i++) {
-        sum += arr[i];
-    }
-
-    printf("The sum of the numbers is: %d\n", sum);
-
-    free(arr);
-
-    return 0;
-}
-`);
-
-console.log(`
-8. sum of N number using calloc
-
-
- #include <stdio.h>
-#include <stdlib.h> 
-
-int main() {
-    int *arr, N;
-    int sum = 0;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &N);
-
-    arr = (int *)calloc(N, sizeof(int));
-
-    if (arr == NULL) {
-        printf("Memory allocation failed!\n");
-        return 1; 
-    }
-
-    printf("Enter %d numbers: \n", N);
-    for (int i = 0; i < N; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    for (int i = 0; i < N; i++) {
-        sum += arr[i];
-    }
-
-    printf("The sum of the entered numbers is: %d\n", sum);
-
-    free(arr);
-
-    return 0;
-}
-`);
-
-
-console.log(`
-9. sum of N number using pointer
-
-
-#include <stdio.h>
-
-int main() {
-    int n, sum = 0;
-    int *ptr;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-
-    int arr[n];
-    
-    printf("Enter %d numbers:\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    ptr = arr;
-
-    for (int i = 0; i < n; i++) {
-        sum += *(ptr + i); // Dereferencing pointer and adding to sum
-    }
-
-    printf("Sum of the numbers is: %d\n", sum);
-
-    return 0;
-} #include <stdio.h>
-
-int main() {
-    int n, sum = 0;
-    int *ptr;
-
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-
-    int arr[n];
-    
-    printf("Enter %d numbers:\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    ptr = arr;
-
-    for (int i = 0; i < n; i++) {
-        sum += *(ptr + i); // Dereferencing pointer and adding to sum
-    }
-
-    printf("Sum of the numbers is: %d\n", sum);
-
-    return 0;
-}
-
-`);
-
-	
-console.log(`
-10. Apply Bubble sort method to arrange the given below data in ascending
-order 12,54,23,6,78,89,5,7,34
-
-
-#include<stdio.h>
-void swap(int *a,int *b);
-void bubbleSort(int arr[],int size);
-int main()
-{
-    int arr[]={12, 6, 23, 54, 5, 7, 34, 78, 89};
-    int n = sizeof(arr)/ sizeof(arr[0]);
-    
-    printf("Orginal Array\n");
-    for(int i=0;i<n;i++)
-    {
-        printf("%d ",arr[i]);
-    }
-    
-    bubbleSort(arr,n);
-    printf("\nAfter Bubble Sorting\n");
-    for(int i=0;i<9;i++)
-    {
-        printf("%d ",arr[i]);
-    }
-
-    
-    
-}
-void swap(int *a,int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
-void bubbleSort(int arr[],int size)
-{
-    int temp;
-    
-    for(int i=0;i<size-1;i++)
-    {
-        for(int j=0;j<size - i - 1;j++)
-        {
-            if(arr[j]>arr[j+1])
-            {
-                temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
-            }
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Successfully withdrawn: " + amount);
+        } else if (amount > balance) {
+            System.out.println("Insufficient balance!");
+        } else {
+            System.out.println("Invalid withdrawal amount!");
         }
     }
-}
 
-Second Method
-
-#include<stdio.h>
-#include<stdbool.h>
-void swap(int *a,int *b);
-void bubbleSort(int arr[],int size);
-int main()
-{
-    int arr[]={12, 6, 23, 54, 5, 7, 34, 78, 89};
-    int n = sizeof(arr)/ sizeof(arr[0]);
-    
-    printf("Orginal Array\n");
-    for(int i=0;i<n;i++)
-    {
-        printf("%d ",arr[i]);
+    public void display() {
+        System.out.println("Depositor Name: " + depositorName);
+        System.out.println("Balance: " + balance);
     }
-    
-    bubbleSort(arr,n);
-    printf("\nAfter Bubble Sorting\n");
-    for(int i=0;i<9;i++)
-    {
-        printf("%d, ",arr[i]);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount(101, "Alice", "Savings", 5000.0);
+        account.display();
+        account.deposit(2000.0);
+        account.withdraw(1500.0);
+        account.display();
+    }
+}
+
+4.Write a Java Program to Find Area of Square, Rectangle and Circle using Method Overloading
+
+code:
+
+class AreaCalculator {
+    public double area(double side) {
+        return side * side;
     }
 
-    
-    
+    public double area(double length, double breadth) {
+        return length * breadth;
+    }
+
+    public double area(double radius, boolean isCircle) {
+        return Math.PI * radius * radius;
+    }
 }
-void swap(int *a,int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+
+public class Main {
+    public static void main(String[] args) {
+        AreaCalculator calculator = new AreaCalculator();
+
+        double squareArea = calculator.area(5);
+        double rectangleArea = calculator.area(4, 7);
+        double circleArea = calculator.area(3, true);
+
+        System.out.println("Area of Square: " + squareArea);
+        System.out.println("Area of Rectangle: " + rectangleArea);
+        System.out.println("Area of Circle: " + circleArea);
+    }
 }
-void bubbleSort(int arr[],int size)
-{
-    bool swapped;
-    
-    for(int i=0;i<size-1;i++)
-    {
-        swapped = false;
-        for(int j=0;j<size - i - 1;j++)
-        {
-            if(arr[j]>arr[j+1])
-            {
-               swap(&arr[j],&arr[j+1]);
-               swapped = true;
-            }
-        }
+
+5.Implement a java program to create a class Box with necessary members  for calculating volume of Box and display it with method name Volume. Create a Box class object and to display the volume of Box.
+
+code:
+
+class Box {
+    double length;
+    double width;
+    double height;
+
+    public Box(double length, double width, double height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+
+    public double Volume() {
+        return length * width * height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box box = new Box(5.0, 4.0, 3.0);
+        System.out.println("Volume of Box: " + box.Volume());
+    }
+}
+
+6.Implement a java program to create a class Person with data members like age, name ,address, mobile number. and declare them as private along with a method to take input of data member getinput() and for display details show(). Create a Person class object and display details.
+
+code:
+
+import java.util.Scanner;
+
+class Person {
+    private int age;
+    private String name;
+    private String address;
+    private String mobileNumber;
+
+    public void getInput() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Name: ");
+        name = scanner.nextLine();
+
+        System.out.print("Enter Age: ");
+        age = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        System.out.print("Enter Address: ");
+        address = scanner.nextLine();
+
+        System.out.print("Enter Mobile Number: ");
+        mobileNumber = scanner.nextLine();
+    }
+
+    public void show() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Address: " + address);
+        System.out.println("Mobile Number: " + mobileNumber);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person();
+        person.getInput();
+        person.show();
+    }
+}
+
+7.Consider 2 program problem in which add condition for which employee get highest salary and display that salary with necessary employee details.
+
+code:
+
+import java.util.Scanner;
+
+class Employee {
+    private int employeeId;
+    private String employeeName;
+    private double salary;
+
+    public void getInput() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Employee ID: ");
+        employeeId = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        System.out.print("Enter Employee Name: ");
+        employeeName = scanner.nextLine();
+
+        System.out.print("Enter Salary: ");
+        salary = scanner.nextDouble();
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void show() {
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Employee Name: " + employeeName);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee emp1 = new Employee();
+        Employee emp2 = new Employee();
+
+        System.out.println("Enter details for Employee 1:");
+        emp1.getInput();
+
+        System.out.println("Enter details for Employee 2:");
+        emp2.getInput();
+
+        double highestSalary = emp1.getSalary() > emp2.getSalary() ? emp1.getSalary() : emp2.getSalary();
         
-        if(!swapped)
-        {
-            break;
+        if (highestSalary == emp1.getSalary()) {
+            System.out.println("\nEmployee with the highest salary:");
+            emp1.show();
+        } else {
+            System.out.println("\nEmployee with the highest salary:");
+            emp2.show();
         }
     }
 }
-`);
 
+8. Create a class Animal as a parent class  with method eat() and variable name. Create a class Dog which declares one method is display() and inherits all the properties of Animal class. Create objects of Dog class and access all the methods, variables of parent class print the details of Dog.
 
-console.log(`
-11. Apply selection sort method to arrange the given below data in ascending
-order 12,54,23,6,78,89,5,7,34
+code:
 
+class Animal {
+    String name;
 
-#include<stdio.h>
-void swap(int *a,int *b);
-void printarr(int arr[],int size);
-void selectionsort(int arr[],int size);
-int main()
-{
-    int arr[] = {12,54,23,6,78,89,5,7,34};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    
-    printf("Unsorted Original Array\n");
-    printarr(arr,n);
-    
-    selectionsort(arr,n);
-    printf("\n\nSorted Array Using Selection Sort\n\n");
-    printarr(arr,n);
-    
-}
-void swap(int *a,int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
-void printarr(int arr[],int size)
-{
-    for(int i=0;i<size;i++)
-    {
-        printf("%d ",arr[i]);
+    public void eat() {
+        System.out.println(name + " is eating.");
     }
 }
-void selectionsort(int arr[],int size)
-{
-    for(int i=0;i<size;i++)
-    {
-        int min = i;
-        for(int j=i+1;j<size;j++)
-        {
-            if(arr[j] < arr[min])
-            {
-                min =j;
-            }
+
+class Dog extends Animal {
+    public void display() {
+        System.out.println("Dog's Name: " + name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.name = "Buddy"; 
+        dog.eat();
+        dog.display();
+    }
+}
+
+9. Create a class Vehicle with run() .Create class Bike that extends Vehicle class and by defining run () method demonstrate method overriding.
+
+code:
+
+class Vehicle {
+    public void run() {
+        System.out.println("Vehicle is running.");
+    }
+}
+
+class Bike extends Vehicle {
+    @Override
+    public void run() {
+        System.out.println("Bike is running.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle vehicle = new Vehicle();
+        vehicle.run();
+
+        Bike bike = new Bike();
+        bike.run();
+    }
+}
+
+10. Creates classes Car, Maruti and Maruti800. We have done a setup – class Maruti extends Car and class Maruti800 extends Maruti. With the help of this Multilevel hierarchy setup our Maruti800 class is able to use the methods of both the classes (Car and Maruti). In Car have method name Speed() along with data member fuel. Also Maruti have gear() along with geartype data member and Maruti800 have getModel() along  with data member gear type. Display all details using Maruti800 class. 
+
+code:
+
+class Car {
+    String fuel;
+
+    public void speed() {
+        System.out.println("The car is running at a speed of 80 km/h.");
+    }
+}
+
+class Maruti extends Car {
+    String gearType;
+
+    public void gear() {
+        System.out.println("Maruti has " + gearType + " transmission.");
+    }
+}
+
+class Maruti800 extends Maruti {
+    String model;
+
+    public void getModel() {
+        System.out.println("Model: " + model);
+    }
+
+    public void displayDetails() {
+        System.out.println("Fuel: " + fuel);
+        speed(); 
+        gear();
+        getModel();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Maruti800 maruti800 = new Maruti800();
+        maruti800.fuel = "Petrol"; 
+        maruti800.gearType = "Manual";  
+        maruti800.model = "Maruti 800"; 
+
+        maruti800.displayDetails();
+    }
+}
+
+11.Create a class Bank with method name GetInterestRate()  as a superclass. Implement hierarchy inheritance with child class ICICI ,SBI,BOB along with method GetInterestRate demonstrate method overriding.
+
+code:
+
+class Bank {
+    public double getInterestRate() {
+        return 0;
+    }
+}
+
+class ICICI extends Bank {
+    @Override
+    public double getInterestRate() {
+        return 7.5;
+    }
+}
+
+class SBI extends Bank {
+    @Override
+    public double getInterestRate() {
+        return 6.8;
+    }
+}
+
+class BOB extends Bank {
+    @Override
+    public double getInterestRate() {
+        return 7.2;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bank bank;
+
+        bank = new ICICI();
+        System.out.println("ICICI Interest Rate: " + bank.getInterestRate());
+
+        bank = new SBI();
+        System.out.println("SBI Interest Rate: " + bank.getInterestRate());
+
+        bank = new BOB();
+        System.out.println("BOB Interest Rate: " + bank.getInterestRate());
+    }
+}
+
+13..Create a class Student with static method getName() ,SetName(), ShowDetails()  and with some data member like name,Rollno,Branch,sem,college. Using getName() take input from user and using SetName() change details of mention data member. Finally display updated values of Student.
+
+code:
+
+import java.util.Scanner;
+
+class Student {
+    static String name;
+    static int rollNo;
+    static String branch;
+    static int sem;
+    static String college;
+
+    public static void getName() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter Roll No: ");
+        rollNo = scanner.nextInt();
+        scanner.nextLine();  // Consume newline
+        System.out.print("Enter Branch: ");
+        branch = scanner.nextLine();
+        System.out.print("Enter Semester: ");
+        sem = scanner.nextInt();
+        scanner.nextLine();  // Consume newline
+        System.out.print("Enter College: ");
+        college = scanner.nextLine();
+    }
+
+    public static void setName(String newName, int newRollNo, String newBranch, int newSem, String newCollege) {
+        name = newName;
+        rollNo = newRollNo;
+        branch = newBranch;
+        sem = newSem;
+        college = newCollege;
+    }
+
+    public static void showDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Roll No: " + rollNo);
+        System.out.println("Branch: " + branch);
+        System.out.println("Semester: " + sem);
+        System.out.println("College: " + college);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student.getName();
+        Student.showDetails();
+
+        Student.setName("John Doe", 102, "Computer Science", 3, "XYZ University");
+        Student.showDetails();
+    }
+}
+
+14.Design a class Circle with data member radius and declare variable pie as  final variable  and find area of circle.
+
+code:
+
+class Circle {
+    double radius;
+    final double pie = 3.14159;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double calculateArea() {
+        return pie * radius * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle(5.0);
+        System.out.println("Area of Circle: " + circle.calculateArea());
+    }
+}
+
+15.Demonstrate usage of this keyword with suitable example.
+
+code:
+
+class Person {
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void display() {
+        System.out.println("Name: " + this.name);
+        System.out.println("Age: " + this.age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("Alice", 25);
+        person.display();
+    }
+}
+
+16.Create an interface named Shape that contains empty methods named Area () and perimeter(). Provide two classes named Triangle and Circle such that each one of the classes implement Shape. Each one of the classes contains only the method Area () and perimeter().that prints the area and perimeter() of the given shape.
+
+code :
+
+interface Shape {
+    void area();
+    void perimeter();
+}
+
+class Triangle implements Shape {
+    double base = 5;
+    double height = 4;
+    double side1 = 3;
+    double side2 = 4;
+    double side3 = 5;
+
+    public void area() {
+        double area = 0.5 * base * height;
+        System.out.println("Area of Triangle: " + area);
+    }
+
+    public void perimeter() {
+        double perimeter = side1 + side2 + side3;
+        System.out.println("Perimeter of Triangle: " + perimeter);
+    }
+}
+
+class Circle implements Shape {
+    double radius = 7;
+
+    public void area() {
+        double area = Math.PI * radius * radius;
+        System.out.println("Area of Circle: " + area);
+    }
+
+    public void perimeter() {
+        double perimeter = 2 * Math.PI * radius;
+        System.out.println("Perimeter of Circle: " + perimeter);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape triangle = new Triangle();
+        triangle.area();
+        triangle.perimeter();
+
+        Shape circle = new Circle();
+        circle.area();
+        circle.perimeter();
+    }
+}
+
+17.Create an abstract class Insect that contains abstract method void flystatus(). Provide three classes Temite, Grasshopper and Ant such that each one classes implement flystatus().
+
+code:
+
+abstract class Insect {
+    abstract void flystatus();
+}
+
+class Termite extends Insect {
+    void flystatus() {
+        System.out.println("Termite cannot fly.");
+    }
+}
+
+class Grasshopper extends Insect {
+    void flystatus() {
+        System.out.println("Grasshopper can fly.");
+    }
+}
+
+class Ant extends Insect {
+    void flystatus() {
+        System.out.println("Ant cannot fly.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Insect termite = new Termite();
+        termite.flystatus();
+
+        Insect grasshopper = new Grasshopper();
+        grasshopper.flystatus();
+
+        Insect ant = new Ant();
+        ant.flystatus();
+    }
+}
+
+18.Declare a class Vehicle. The Vehicle class derive two_wheeler, three_wheeler and four_wheeler class. Display properties of each type of vehicle using member function of the class. (like speed,fuel type,etc.)
+
+code:
+
+class Vehicle {
+    String fuelType;
+    int speed;
+
+    public Vehicle(String fuelType, int speed) {
+        this.fuelType = fuelType;
+        this.speed = speed;
+    }
+
+    public void displayProperties() {
+        System.out.println("Fuel Type: " + fuelType);
+        System.out.println("Speed: " + speed + " km/h");
+    }
+}
+
+class TwoWheeler extends Vehicle {
+    public TwoWheeler(String fuelType, int speed) {
+        super(fuelType, speed);
+    }
+
+    public void displayProperties() {
+        System.out.println("Two-Wheeler Properties:");
+        super.displayProperties();
+    }
+}
+
+class ThreeWheeler extends Vehicle {
+    public ThreeWheeler(String fuelType, int speed) {
+        super(fuelType, speed);
+    }
+
+    public void displayProperties() {
+        System.out.println("Three-Wheeler Properties:");
+        super.displayProperties();
+    }
+}
+
+class FourWheeler extends Vehicle {
+    public FourWheeler(String fuelType, int speed) {
+        super(fuelType, speed);
+    }
+
+    public void displayProperties() {
+        System.out.println("Four-Wheeler Properties:");
+        super.displayProperties();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle twoWheeler = new TwoWheeler("Petrol", 80);
+        twoWheeler.displayProperties();
+
+        Vehicle threeWheeler = new ThreeWheeler("Diesel", 60);
+        threeWheeler.displayProperties();
+
+        Vehicle fourWheeler = new FourWheeler("Electric", 120);
+        fourWheeler.displayProperties();
+    }
+}
+
+19.Create an interface Vegetable along with method color() and grow(). Implement color and grow methods with three classes Spinach, Potato, Onion, Tomato.
+
+code:
+
+interface Vegetable {
+    void color();
+    void grow();
+}
+
+class Spinach implements Vegetable {
+    public void color() {
+        System.out.println("Spinach is green.");
+    }
+
+    public void grow() {
+        System.out.println("Spinach grows in cool weather.");
+    }
+}
+
+class Potato implements Vegetable {
+    public void color() {
+        System.out.println("Potato is brown or yellow.");
+    }
+
+    public void grow() {
+        System.out.println("Potato grows underground.");
+    }
+}
+
+class Onion implements Vegetable {
+    public void color() {
+        System.out.println("Onion is usually white, yellow, or red.");
+    }
+
+    public void grow() {
+        System.out.println("Onion grows from bulbs.");
+    }
+}
+
+class Tomato implements Vegetable {
+    public void color() {
+        System.out.println("Tomato is red when ripe.");
+    }
+
+    public void grow() {
+        System.out.println("Tomato grows on vines.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vegetable spinach = new Spinach();
+        spinach.color();
+        spinach.grow();
+
+        Vegetable potato = new Potato();
+        potato.color();
+        potato.grow();
+
+        Vegetable onion = new Onion();
+        onion.color();
+        onion.grow();
+
+        Vegetable tomato = new Tomato();
+        tomato.color();
+        tomato.grow();
+    }
+}
+
+
+20.Create an interface College with field name Name of college, Branch, Student name, Sem, with method Showdetails(). Add two class Department and Student. In Department it will display Branch along with student name by implementing Showdetails() and Student class will display College name,Student name,sem,Branch by implementing Showdetials(). Showdetials(). Enter all the details by user input only. Display all these details using Reference variable of College interface.
+
+code:
+
+import java.util.Scanner;
+
+interface College {
+    void Showdetails();
+}
+
+class Department implements College {
+    String branch;
+    String studentName;
+
+    public Department(String branch, String studentName) {
+        this.branch = branch;
+        this.studentName = studentName;
+    }
+
+    public void Showdetails() {
+        System.out.println("Branch: " + branch);
+        System.out.println("Student Name: " + studentName);
+    }
+}
+
+class Student implements College {
+    String collegeName;
+    String studentName;
+    int sem;
+    String branch;
+
+    public Student(String collegeName, String studentName, int sem, String branch) {
+        this.collegeName = collegeName;
+        this.studentName = studentName;
+        this.sem = sem;
+        this.branch = branch;
+    }
+
+    public void Showdetails() {
+        System.out.println("College Name: " + collegeName);
+        System.out.println("Student Name: " + studentName);
+        System.out.println("Semester: " + sem);
+        System.out.println("Branch: " + branch);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter College Name: ");
+        String collegeName = sc.nextLine();
+        System.out.print("Enter Student Name: ");
+        String studentName = sc.nextLine();
+        System.out.print("Enter Semester: ");
+        int sem = sc.nextInt();
+        sc.nextLine();  // Consume newline
+        System.out.print("Enter Branch: ");
+        String branch = sc.nextLine();
+
+        College student = new Student(collegeName, studentName, sem, branch);
+        student.Showdetails();
+
+        System.out.print("Enter Branch for Department: ");
+        String deptBranch = sc.nextLine();
+        College department = new Department(deptBranch, studentName);
+        department.Showdetails();
+    }
+}
+
+
+21.. Write a program to implement following:
+
+(i) Print the name of thread.
+
+(ii)Change the name of thread
+
+(iii) wait the thread
+
+(iv) Display details of thread.
+
+code:
+
+class MyThread extends Thread {
+    public void run() {
+        try {
+            System.out.println("Thread Name: " + Thread.currentThread().getName());
+            Thread.currentThread().setName("MyCustomThread");
+            System.out.println("Thread Name after change: " + Thread.currentThread().getName());
+            System.out.println("Thread is waiting...");
+            Thread.sleep(2000);
+            System.out.println("Thread ID: " + Thread.currentThread().getId());
+            System.out.println("Thread State: " + Thread.currentThread().getState());
+            System.out.println("Thread Priority: " + Thread.currentThread().getPriority());
+        } catch (InterruptedException e) {
+            System.out.println("Thread was interrupted.");
         }
-        
-        if(min != i)
-        {
-            swap(&arr[min],&arr[i]);
-            // swap(&arr[i],&arr[min]);
-        }
-    }
-}
-`);
-
-
-console.log(`
-12. Apply insertion method to arrange the given below data in ascending order: 11,55,22,6,78,89,55,77,34
-
-
-#include <stdio.h>
-
-
-// Function to perform insertion sort
-void insertionSort(int arr[], int size) {
-    for (int i = 1; i < size; i++) {
-        int valueToInsert = arr[i];  // Current value to be inserted
-        int holePosition = i;        // Start the hole at the current position
-
-
-        printf("\nPass %d:\n", i);
-        printf("Value to insert: %d\n", valueToInsert);
-
-
-        // Move the hole backward while shifting elements
-        while (holePosition > 0 && arr[holePosition - 1] > valueToInsert) {
-            printf("Comparing %d and %d: Shifting %d to the right.\n", arr[holePosition - 1], valueToInsert, arr[holePosition - 1]);
-            arr[holePosition] = arr[holePosition - 1];  // Shift element to the right
-            holePosition--;                             // Move the hole backward
-        }
-
-
-        // Insert the value at the hole position
-        arr[holePosition] = valueToInsert;
-        printf("Inserted %d at position %d.\n", valueToInsert, holePosition);
-
-
-        // Debug: Print the array after this pass
-        printf("Array after Pass %d: ", i);
-        for (int k = 0; k < size; k++) {
-            printf("%d ", arr[k]);
-        }
-        printf("\n");
     }
 }
 
-
-int main() {
-    int arr[] = {11, 55, 22, 6, 78};
-    int size = sizeof(arr) / sizeof(arr[0]);
-
-
-    printf("Original Array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", arr[i]);
+public class Main {
+    public static void main(String[] args) {
+        MyThread thread = new MyThread();
+        thread.start();
     }
-    printf("\n");
-
-
-    insertionSort(arr, size);
-
-
-    printf("\nSorted Array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-
-
-    return 0;
-}
-`);
-
-
-console.log(`
-13. Apply Linear search algorithm for the array based on its implementation.
-
-
-#include<stdio.h>
-int main()
-{
-    int arr[20],i,x,n;
-    printf("Enter Total Element for array:");
-    scanf("%d",&n);
-    
-    
-    for(i = 0 ; i<n;i++)
-    {
-        printf("\nEnter Element At[%d]:",i);
-        scanf("%d",&arr[i]);
-    }
-    
-    printf("\nEnter Element For Check: ");
-    scanf("%d",&x);
-    
-    for(i = 0;i<n;i++)
-    {
-        if(arr[i]  == x)
-        {
-            break;
-        }
-    }
-    
-    if(i < n)
-    {
-        printf("Element Found At Index : %d",i);
-    }
-    else
-    {
-        printf("Element Not Found!!");
-    }
-}
-`);
-
-
-console.log(`
-14.  Apply Binary search algorithm for the array based on its implementation.
- 
-//Binary Search
-#include<stdio.h>
-int binarySearch(int arr[],int low,int high,int target);
-int main()
-{
-    int arr[100],n,target,searchIndex,first,last;
-    
-    printf("Enter Total Elements of array:");
-    scanf("%d",&n);
-    
-    printf("Enter Values in Ascending Order :");
-    for(int i=0;i<n;i++)
-    {
-        scanf("%d",&arr[i]);
-    }
-    
-    printf("Enter The Value to Find:");
-    scanf("%d",&target);
-    
-    first = 0;
-    last = n-1;
-    
-    searchIndex=binarySearch(arr,first,last,target);
-    
-    if(searchIndex == -1)
-    {
-        printf("Not Found!!");
-    }
-    else
-    {
-        printf("%d is present at location %d.\n",target,searchIndex);
-    }
-}
-int binarySearch(int arr[],int low,int high,int target)
-{
-    int mid;
-    
-    if(low > high)
-    {
-        return -1;
-    }
-    
-    mid = (low+high) / 2;
-    
-    if(arr[mid] == target)
-    {
-        return mid;
-    }
-    else if(target > arr[mid])
-    {
-        return binarySearch(arr,mid+1,high,target);
-    }
-    else
-    {
-        return binarySearch(arr,low,mid-1,target);
-    }
-    
 }
 `);
 </script>
+</body>
 </html>
